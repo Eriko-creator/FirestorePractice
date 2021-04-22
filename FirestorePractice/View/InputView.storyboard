@@ -38,6 +38,10 @@
                         <viewLayoutGuide key="safeArea" id="ZUb-99-j4s"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <outlet property="decideButton" destination="s0n-3v-QMd" id="ZQ3-HC-OtQ"/>
+                        <outlet property="textField" destination="nYQ-2y-ise" id="han-2F-piV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lxy-cd-V9D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

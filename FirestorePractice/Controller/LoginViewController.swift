@@ -14,6 +14,7 @@ final class LoginViewController: UIViewController {
     private let appleProvider = FUIOAuth.appleAuthProvider()
     private let twitterProvider = FUIOAuth.twitterAuthProvider()
     private let authUI = FUIAuth.defaultAuthUI()
+    static var uid = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +39,7 @@ final class LoginViewController: UIViewController {
         Auth.auth().addStateDidChangeListener{ auth, user in
             if user != nil{
                 print("success")
+                self.didLogin()
             } else {
                 print("fail")
                 self.login()
@@ -47,8 +49,33 @@ final class LoginViewController: UIViewController {
     
     private func login() {
         let authViewController = authUI!.authViewController()
-        authViewController.modalPresentationStyle = .fullScreen
-        self.present(authViewController, animated: true, completion: nil)
+        present(authViewController, animated: true, completion: nil)
+    }
+    
+    private func didLogin(){
+        let db = Firestore.firestore()
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        LoginViewController.uid = Auth.auth().currentUser?.uid ?? ""
+        
+        let docRef = db.collection("users").document("\(uid)")
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists{
+                //uidがfirestoreに存在する場合InputViewに飛ぶ
+                self.moveToInputView()
+            } else {
+                //uidが存在しない場合firestoreに格納
+                docRef.setData([
+                    "createdAt": Timestamp(),
+                    "userId": uid
+                ])
+                self.moveToInputView()
+            }
+        }
+    }
+    
+    private func moveToInputView(){
+        let input = InputViewController.makeFromStoryboard()
+        self.navigationController?.pushViewController(input, animated: true)
     }
 }
 
