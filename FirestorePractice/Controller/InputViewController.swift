@@ -19,7 +19,7 @@ final class InputViewController: UIViewController {
     static var collectionRef: CollectionReference{
         get{
             let db = Firestore.firestore()
-            let uid = LoginViewController.uid
+            let uid = FirebaseAuthModel.uid
             return db.collection("users").document("\(uid)").collection("inputWord")
         }
     }
