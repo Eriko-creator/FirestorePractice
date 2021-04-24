@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import FirebaseFirestore
 
 final class InputViewController: UIViewController {
 
@@ -16,13 +15,6 @@ final class InputViewController: UIViewController {
             decideButton.addTarget(self, action: #selector(didTapDecideButton), for: .touchUpInside)
         }
     }
-    static var collectionRef: CollectionReference{
-        get{
-            let db = Firestore.firestore()
-            let uid = FirebaseAuthModel.uid
-            return db.collection("users").document("\(uid)").collection("inputWord")
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,23 +22,10 @@ final class InputViewController: UIViewController {
     }
     
     @objc private func didTapDecideButton(){
-        saveInputWord()
-        let history = HistoryViewController()
-        self.navigationController?.pushViewController(history, animated: true)
-    }
-    
-    //入力したキーワードをfirestore上に保存する
-    private func saveInputWord(){
-        guard let keyWord = textField.text else { return }
-        InputViewController.collectionRef.document("\(keyWord)").setData([
-            "date": Timestamp(),
-            "keyWord": "\(keyWord)"
-        ]) { err in
-            if let error = err{
-                print("Error adding document: \(error)")
-            }else{
-                print("Successfully document added")
-            }
+        guard let inputWord = textField.text else { return }
+        FirestoreModel.save(inputWord: inputWord) {
+            let history = HistoryViewController()
+            self.navigationController?.pushViewController(history, animated: true)
         }
     }
     
