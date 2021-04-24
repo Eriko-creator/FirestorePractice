@@ -25,7 +25,7 @@ final class FirestoreModel{
     }
     
     static func getWords(completion: @escaping(Result<[String], Error>)->Void){
-        let inputWordRef = Firestore.firestore().collection("InputWord")
+        let inputWordRef = Firestore.firestore().collection("InputWord").whereField("uid", in: ["\(FirebaseAuthModel.uid)"])
         //入力日時順に最新30件を取得する
         let inputWord = inputWordRef.order(by: "createdAt", descending: true).limit(to: 30)
         inputWord.addSnapshotListener { (querySnapshot, error) in
