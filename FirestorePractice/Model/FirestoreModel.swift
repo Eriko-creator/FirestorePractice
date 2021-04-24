@@ -37,7 +37,6 @@ final class FirestoreModel{
                 var keyWordArray = [String]()
                 for document in querySnapshot.documents{
                     guard let keyWord = document.data()["keyWord"] as? String else { return }
-                    print(keyWord)
                     keyWordArray.append(keyWord)
                 }
                 completion(.success(keyWordArray))
