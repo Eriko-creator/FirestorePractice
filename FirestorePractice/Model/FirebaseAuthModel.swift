@@ -65,13 +65,15 @@ enum LoginStatus{
     case isAuthenticated
     case userNotFound
     
-    func moveToNextPage(_ navigationController: UINavigationController?, _ viewController: UIViewController){
+    func moveToNextPage(_ viewController: UIViewController){
         switch self{
         case .isAuthenticated:
             let input = InputViewController.makeFromStoryboard()
-            navigationController?.pushViewController(input, animated: true)
+            input.modalPresentationStyle = .fullScreen
+            viewController.present(input, animated: true, completion: nil)
         case .userNotFound:
             guard let auth = FirebaseAuthModel().makeAuthUI()?.authViewController() else { return }
+            auth.modalPresentationStyle = .fullScreen
             viewController.present(auth, animated: true, completion: nil)
         }
     }

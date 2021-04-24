@@ -18,7 +18,6 @@
 		34476E83262451FE00986A54 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34476E82262451FE00986A54 /* LoginViewController.swift */; };
 		34476EEE2624A2DC00986A54 /* LoginView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34476EED2624A2DC00986A54 /* LoginView.storyboard */; };
 		34476EF32625847500986A54 /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34476EF22625847500986A54 /* InputViewController.swift */; };
-		34476FDC262D4B3400986A54 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34476FDB262D4B3300986A54 /* HistoryViewController.swift */; };
 		34476FE4262EC4DE00986A54 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 34476FE3262EC4DE00986A54 /* GoogleService-Info.plist */; };
 		34476FF4262F2DB900986A54 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34476FF3262F2DB800986A54 /* Cell.swift */; };
 		34476FFA2631B8A000986A54 /* FirebaseAuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34476FF92631B89F00986A54 /* FirebaseAuthModel.swift */; };
@@ -64,7 +63,6 @@
 		34476E82262451FE00986A54 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		34476EED2624A2DC00986A54 /* LoginView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginView.storyboard; sourceTree = "<group>"; };
 		34476EF22625847500986A54 /* InputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
-		34476FDB262D4B3300986A54 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		34476FE3262EC4DE00986A54 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		34476FEB262EC68100986A54 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		34476FF3262F2DB800986A54 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
@@ -171,7 +169,6 @@
 			children = (
 				34476E82262451FE00986A54 /* LoginViewController.swift */,
 				34476EF22625847500986A54 /* InputViewController.swift */,
-				34476FDB262D4B3300986A54 /* HistoryViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -498,7 +495,6 @@
 				34476EF32625847500986A54 /* InputViewController.swift in Sources */,
 				34476FF4262F2DB900986A54 /* Cell.swift in Sources */,
 				34476DFB26232B8300986A54 /* ViewController.swift in Sources */,
-				34476FDC262D4B3400986A54 /* HistoryViewController.swift in Sources */,
 				344770052632D05B00986A54 /* FirestoreModel.swift in Sources */,
 				34476FFA2631B8A000986A54 /* FirebaseAuthModel.swift in Sources */,
 				34476DF726232B8300986A54 /* AppDelegate.swift in Sources */,

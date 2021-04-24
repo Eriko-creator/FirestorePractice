@@ -16,7 +16,7 @@ final class LoginViewController: UIViewController {
     
     private func checkLoggedIn(){
         FirebaseAuthModel.checkLoggedIn { (status) in
-            status.moveToNextPage(self.navigationController, self)
+            status.moveToNextPage(self)
         }
     }
 }

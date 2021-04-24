@@ -10,7 +10,7 @@ import FirebaseFirestore
 
 final class FirestoreModel{
     
-    static func save(inputWord: String, completion: @escaping (()->Void)){
+    static func save(inputWord: String){
         Firestore.firestore().collection("InputWord").addDocument(data: [
             "uid": FirebaseAuthModel.uid,
             "createdAt": Timestamp(),
@@ -20,7 +20,6 @@ final class FirestoreModel{
                 print("Error adding document：\(error)")
             }else{
                 print("Successfully document added")
-                completion()
             }
         }
     }
