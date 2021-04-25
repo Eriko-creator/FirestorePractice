@@ -11,7 +11,9 @@ import Firebase
 
 final class FirebaseAuthModel{
     
-    static var uid = ""
+    //インスタンス化されないようにする
+    private init(){}
+    static let uid: String = Auth.auth().currentUser?.uid ?? ""
     
     static func checkLoggedIn(completion: @escaping (LoginStatus)->Void){
         Auth.auth().addStateDidChangeListener{ auth, user in
@@ -29,10 +31,7 @@ final class FirebaseAuthModel{
     
     static func didLogin(completion: @escaping ()->Void){
         let db = Firestore.firestore()
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        FirebaseAuthModel.uid = Auth.auth().currentUser?.uid ?? ""
-        
-        let docRef = db.collection("users").document("\(uid)")
+        let docRef = db.collection("users").document(uid)
         docRef.getDocument { (document, error) in
             if let document = document, document.exists{
                 completion()
