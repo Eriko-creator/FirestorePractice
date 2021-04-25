@@ -10,7 +10,7 @@ import UIKit
 final class InputViewController: UIViewController {
 
     @IBOutlet private weak var textField: UITextField!
-    @IBOutlet weak var tableView: UITableView!{
+    @IBOutlet private weak var tableView: UITableView!{
         didSet{
             tableView.register(Cell.self, forCellReuseIdentifier: "cell")
             tableView.dataSource = self
