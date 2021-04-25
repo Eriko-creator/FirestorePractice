@@ -14,13 +14,40 @@
                     <view key="view" contentMode="scaleToFill" id="G6e-nM-IHM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="認証中" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1o7-xK-uAP">
+                                <rect key="frame" x="181" y="437.5" width="52" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Xxt-ky-G5o"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="1o7-xK-uAP" firstAttribute="centerY" secondItem="G6e-nM-IHM" secondAttribute="centerY" id="Sp9-UV-G32"/>
+                            <constraint firstItem="1o7-xK-uAP" firstAttribute="centerX" secondItem="G6e-nM-IHM" secondAttribute="centerX" id="z5N-KW-GrN"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Q6V-fG-dL0"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <segue destination="oKv-tT-JZ3" kind="show" identifier="input" id="c4J-kb-cLn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9mU-Gt-lPZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9" y="95"/>
+            <point key="canvasLocation" x="918.84057971014499" y="94.419642857142847"/>
+        </scene>
+        <!--InputView-->
+        <scene sceneID="2Z5-Ml-Hh4">
+            <objects>
+                <viewControllerPlaceholder storyboardName="InputView" id="oKv-tT-JZ3" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Es9-Hb-4XJ"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C7M-zD-aJr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1625" y="94"/>
         </scene>
     </scenes>
 </document>

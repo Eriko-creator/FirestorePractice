@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="U8o-Cz-sJg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Jqv-Ce-so3">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -8,40 +8,80 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Input View Controller-->
+        <!--Input Words-->
         <scene sceneID="lvW-vv-CJi">
             <objects>
                 <viewController id="U8o-Cz-sJg" customClass="InputViewController" customModule="FirestorePractice" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QVL-dR-n1o">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="文字を入力" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ubK-bA-c4d">
-                                <rect key="frame" x="78" y="207" width="92" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nYQ-2y-ise">
-                                <rect key="frame" x="74" y="236" width="266" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s0n-3v-QMd">
-                                <rect key="frame" x="192" y="306" width="31" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="決定"/>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="cHC-ap-gVg">
+                                <rect key="frame" x="20" y="20" width="374" height="34"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="入力" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ubK-bA-c4d">
+                                        <rect key="frame" x="0.0" y="0.0" width="35" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nYQ-2y-ise">
+                                        <rect key="frame" x="45" y="0.0" width="288" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s0n-3v-QMd">
+                                        <rect key="frame" x="343" y="0.0" width="31" height="34"/>
+                                        <state key="normal" title="決定"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0rD-QA-0tX">
+                                <rect key="frame" x="0.0" y="74" width="414" height="700"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ZUb-99-j4s"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="0rD-QA-0tX" firstAttribute="trailing" secondItem="ZUb-99-j4s" secondAttribute="trailing" id="EuS-oV-VbY"/>
+                            <constraint firstItem="cHC-ap-gVg" firstAttribute="leading" secondItem="ZUb-99-j4s" secondAttribute="leading" constant="20" id="IUJ-5I-DK9"/>
+                            <constraint firstItem="0rD-QA-0tX" firstAttribute="bottom" secondItem="ZUb-99-j4s" secondAttribute="bottom" id="J44-06-ijc"/>
+                            <constraint firstItem="0rD-QA-0tX" firstAttribute="leading" secondItem="ZUb-99-j4s" secondAttribute="leading" id="WpS-F7-pn4"/>
+                            <constraint firstItem="0rD-QA-0tX" firstAttribute="top" secondItem="cHC-ap-gVg" secondAttribute="bottom" constant="20" id="ZKX-R9-28z"/>
+                            <constraint firstItem="ZUb-99-j4s" firstAttribute="trailing" secondItem="cHC-ap-gVg" secondAttribute="trailing" constant="20" id="bBJ-e9-X9A"/>
+                            <constraint firstItem="cHC-ap-gVg" firstAttribute="top" secondItem="ZUb-99-j4s" secondAttribute="top" constant="20" id="eqf-Z6-SOy"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Input Words" id="Kf3-yo-fXL"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <connections>
+                        <outlet property="decideButton" destination="s0n-3v-QMd" id="ZQ3-HC-OtQ"/>
+                        <outlet property="tableView" destination="0rD-QA-0tX" id="Iq1-Bv-Yfx"/>
+                        <outlet property="textField" destination="nYQ-2y-ise" id="han-2F-piV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lxy-cd-V9D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="118.84057971014494" y="81.696428571428569"/>
+            <point key="canvasLocation" x="3759.420289855073" y="81.696428571428569"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="kIH-82-p5f">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="Jqv-Ce-so3" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ai6-AN-zdZ">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="U8o-Cz-sJg" kind="relationship" relationship="rootViewController" id="wnN-GU-ayH"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J45-yk-gJg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2849.275362318841" y="81.696428571428569"/>
         </scene>
     </scenes>
     <resources>
