@@ -55,6 +55,12 @@ final class FirestoreModel{
             }
         }
     }
+    
+    static func overwrite(documentID: String){
+        Firestore.firestore().collection("InputWord").document(documentID).setData([
+            "createdAt": Timestamp()
+        ], merge: true)
+    }
 }
 
 struct InputWordsData{

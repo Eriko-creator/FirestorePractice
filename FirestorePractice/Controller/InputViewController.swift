@@ -45,7 +45,12 @@ final class InputViewController: UIViewController {
     
     @objc private func didTapDecideButton(){
         guard let inputWord = textField.text else { return }
-        FirestoreModel.save(inputWord: inputWord)
+        if keyWords.contains(inputWord){
+            guard let indexNumber = keyWords.firstIndex(of: inputWord) else { return }
+            FirestoreModel.overwrite(documentID: documentID[indexNumber])
+        }else{
+            FirestoreModel.save(inputWord: inputWord)
+        }
     }
 }
 
