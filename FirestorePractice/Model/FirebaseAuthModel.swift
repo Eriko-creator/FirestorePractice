@@ -47,7 +47,7 @@ final class FirebaseAuthModel{
         }
     }
     
-    func makeAuthUI() -> FUIAuth?{
+    static func makeAuthUI() -> FUIAuth?{
         guard let authUI = FUIAuth.defaultAuthUI() else {return nil}
         let providers: [FUIAuthProvider] = [
             FUIEmailAuth(),
@@ -70,7 +70,7 @@ enum LoginStatus{
         case .isAuthenticated:
             viewController.performSegue(withIdentifier: "input", sender: nil)
         case .userNotFound:
-            guard let auth = FirebaseAuthModel().makeAuthUI()?.authViewController() else { return }
+            guard let auth = FirebaseAuthModel.makeAuthUI()?.authViewController() else { return }
             auth.modalPresentationStyle = .fullScreen
             viewController.present(auth, animated: true, completion: nil)
         }
