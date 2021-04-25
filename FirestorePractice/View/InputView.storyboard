@@ -11,7 +11,7 @@
         <!--Input Words-->
         <scene sceneID="lvW-vv-CJi">
             <objects>
-                <viewController storyboardIdentifier="input" useStoryboardIdentifierAsRestorationIdentifier="YES" id="U8o-Cz-sJg" customClass="InputViewController" customModule="FirestorePractice" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="U8o-Cz-sJg" customClass="InputViewController" customModule="FirestorePractice" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QVL-dR-n1o">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -68,7 +68,7 @@
         <!--Navigation Controller-->
         <scene sceneID="kIH-82-p5f">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Jqv-Ce-so3" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="Jqv-Ce-so3" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ai6-AN-zdZ">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
