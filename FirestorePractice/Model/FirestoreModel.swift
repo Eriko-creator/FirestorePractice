@@ -24,7 +24,7 @@ final class FirestoreModel{
         }
     }
     
-    static func getWords(completion: @escaping(Result<[String], Error>)->Void){
+    static func getWords(completion: @escaping(Result<InputWordsData, Error>)->Void){
         let inputWordRef = Firestore.firestore().collection("InputWord").whereField("uid", in: ["\(FirebaseAuthModel.uid)"])
         //入力日時順に最新30件を取得する
         let inputWord = inputWordRef.order(by: "createdAt", descending: true).limit(to: 30)
@@ -34,12 +34,30 @@ final class FirestoreModel{
             } else {
                 guard let querySnapshot = querySnapshot else { return }
                 var keyWordArray = [String]()
+                var idArray = [String]()
                 for document in querySnapshot.documents{
                     guard let keyWord = document.data()["keyWord"] as? String else { return }
                     keyWordArray.append(keyWord)
+                    idArray.append(document.documentID)
                 }
-                completion(.success(keyWordArray))
+                let data = InputWordsData(keyWords: keyWordArray, documentID: idArray)
+                completion(.success(data))
             }
         }
     }
+    
+    static func delete(documentID: String){
+        Firestore.firestore().collection("InputWord").document(documentID).delete { (error) in
+            if let error = error{
+                print("Error deleting document:\(error)")
+            }else{
+                print("Successfully document deleted")
+            }
+        }
+    }
+}
+
+struct InputWordsData{
+    var keyWords: [String]
+    var documentID: [String]
 }

@@ -14,6 +14,7 @@ final class InputViewController: UIViewController {
         didSet{
             tableView.register(Cell.self, forCellReuseIdentifier: "cell")
             tableView.dataSource = self
+            tableView.delegate = self
         }
     }
     @IBOutlet private weak var decideButton: UIButton!{
@@ -22,6 +23,7 @@ final class InputViewController: UIViewController {
         }
     }
     private var keyWords = [String]()
+    private var documentID = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,8 +35,9 @@ final class InputViewController: UIViewController {
             switch result{
             case .failure(let error):
                 print("Error fetching document: \(error)")
-            case .success(let keyWordArray):
-                self?.keyWords = keyWordArray
+            case .success(let data):
+                self?.keyWords = data.keyWords
+                self?.documentID = data.documentID
                 self?.tableView.reloadData()
             }
         }
@@ -43,10 +46,6 @@ final class InputViewController: UIViewController {
     @objc private func didTapDecideButton(){
         guard let inputWord = textField.text else { return }
         FirestoreModel.save(inputWord: inputWord)
-    }
-    
-    static func makeFromStoryboard()->InputViewController{
-        UIStoryboard(name: "InputView", bundle: nil).instantiateViewController(withIdentifier: "input") as! InputViewController
     }
 }
 
@@ -60,5 +59,15 @@ extension InputViewController: UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = keyWords[indexPath.row]
         return cell
+    }
+}
+
+extension InputViewController: UITableViewDelegate{
+    
+    //スワイプで削除するメソッド
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        keyWords.remove(at: indexPath.row)
+        FirestoreModel.delete(documentID: documentID[indexPath.row])
+        tableView.deleteRows(at: [indexPath], with: .automatic)
     }
 }
