@@ -38,7 +38,7 @@ final class FirebaseAuthModel{
             } else {
                 //uidが存在しない場合firestoreに格納
                 docRef.setData([
-                    "createdAt": Timestamp(),
+                    "createdAt": FieldValue.serverTimestamp(),
                     "userId": uid
                 ])
                 completion()

@@ -13,7 +13,7 @@ final class FirestoreModel{
     static func save(inputWord: String){
         Firestore.firestore().collection("InputWord").addDocument(data: [
             "uid": FirebaseAuthModel.uid,
-            "createdAt": Timestamp(),
+            "createdAt": FieldValue.serverTimestamp(),
             "keyWord": inputWord
         ]) { (error) in
             if let error = error{
@@ -58,7 +58,7 @@ final class FirestoreModel{
     
     static func overwrite(documentID: String){
         Firestore.firestore().collection("InputWord").document(documentID).setData([
-            "createdAt": Timestamp()
+            "createdAt": FieldValue.serverTimestamp()
         ], merge: true)
     }
 }
