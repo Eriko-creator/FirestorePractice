@@ -24,4 +24,8 @@ Pods/*
 !.gitkeep
 .DS_Store
 
-*.plist
+# firestore
+.firebaserc
+firebase.json
+firestore.rules
+firestore.indexes.json
